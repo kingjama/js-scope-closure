@@ -8,11 +8,17 @@
  * Study the code below for counter1 and counter2. Answer the questions below.
  * 
  * 1. What is the difference between counter1 and counter2?
- * 
+ 
+ Counter one uses a closure  as the inner function has access to the outer parent function
+ 
  * 2. Which of the two uses a closure? How can you tell?
- * 
+ 
+ Number One because the inner function access the variable on the parent function (count=0)
+ 
  * 3. In what scenario would the counter1 code be preferable? In what scenario would counter2 be better? 
- *
+ 
+ Counter 1 code would preferable in scenarios where there would be different functions that are console.log
+ for the parent function. 
 */
 
 // counter1 code
@@ -41,12 +47,6 @@ function counter2() {
 /* Inside the motivation function create another function called message that
 will return 'You're doing awesome, keep it up firstname lastname.' */
 
-function motivation(firstname, lastname) {
-
-  var welcomeText = 'You\'re doing awesome, keep it up ';
-
-  // code message function here.
-
 
   //Uncommment this to return the value of your invoked message function
   //return message();
@@ -55,6 +55,14 @@ function motivation(firstname, lastname) {
 
 motivation('Mohamed', 'Ali'); // 'You're doing awesome keep it up Mohamed Ali.
 
+
+
+function motivation (first, last, phrase)
+{return phrase(first, last)}
+
+const phrases = function(first, last)
+{return `You're doing great, keep it up ${first} ${last}`}
+motivation("mohamed", "ali", phrases)
 
 /******************************************************************************\
  Task 3: Find Your Friends
@@ -78,6 +86,23 @@ var isNotAFriend = findPotentialFriends( friends );
 // isNotAFriend(allUsers[0]); // false
 // isNotAFriend(secondLevelFriends[2]); // true
 
+
+var friends = ["Ahmed", "Khadijo", "Farah"];
+var secondLevelFriends = ["Mahad", "Farah", "Mohamed"];
+var allUsers = ["Ahmed", "Khadijo", "Farah", "Mahad", "Mohamed", "Bashir", "Ali"];
+
+function areThey(users, list, cb)
+{return cb(users, list)}
+
+let checkIt = function(users, list)
+{console.log(users,list)
+for (let i=0; i< list.length; i++)
+{console.log(list[i].indexOf(users))
+if (list[i].indexOf(users) ==-1)
+{return false}
+else {return true}}
+}
+console.log(areThey("Ahmed", allUsers, checkIt))
 
 /******************************************************************************\
 	Task 4: Keep a log
@@ -121,6 +146,22 @@ timeOutCounter();
 */
 
 
+const array= ["Hashi", "Sumaya", "Abdi", "Faduma", "Farhiya"]
+
+function findNames(user, family, cb)
+{return cb(user, family)}
+
+let findtheNames = function(user, family) {
+  console.log(user, family)
+
+  for (let i=0; i < family.length; i++)
+{ console.log(family[i].indexOf(user))
+
+if (family[i].indexOf(user) == -1)
+
+{return false} else {return true}}
+}
+console.log(findNames("Hashi", array, findtheNames))
 
 /* STRETCH PROBLEMS, Do not attempt until you have completed all previous tasks for today's project files */
 
